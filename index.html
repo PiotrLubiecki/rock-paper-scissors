@@ -1,60 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
-  <meta charset="UTF-8"/>
+    <title>Page Title</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <script>
-        let availablePlays = ['rock', 'paper', 'scissors'];
-        function playerPlay () {
-            let playerSelection = '';
-            do {
-                playerSelection = prompt("What's your play?").toLowerCase();
-                if (!availablePlays.includes(playerSelection)){
-                    alert("Please input rock, paper or scissors");
-                }
-            } while(!availablePlays.includes(playerSelection));
-            return playerSelection;
-        }
-        function computerPlay() {
-            return availablePlays[Math.floor(Math.random() * availablePlays.length)];
-      }
-        function playRound(){
-            let computerSelection = computerPlay();
-            let playerSelection = playerPlay();
-            if (playerSelection == computerSelection){
-              return("Draw!");
-            } else if ((playerSelection == 'rock' && computerSelection == 'scissors')
-                    || (playerSelection == 'scissors' && computerSelection == 'paper') 
-                    || (playerSelection == 'paper' && computerSelection == 'rock')){
-                return (`You win, ${playerSelection} beats ${computerSelection}!`);    
-            } else {
-                return (`You lose, ${computerSelection} beats ${playerSelection}!`); 
-            }
-        }
-        function game() { 
-            let playerScore = 0;
-            let computerScore = 0;
-            for (let i = 0; i < 5; i++){
-                let result = playRound();
-                if (result.includes("win")){
-                    playerScore += 1;
-                } else if (result.includes("lose")){
-                    computerScore += 1;
-                }
-                console.log(playerScore);
-                alert(`${result}\nYou: ${playerScore}\nComputer: ${computerScore}`);
-            }
-            if (playerScore > computerScore){
-                alert('You won!');
-            } else if (computerScore > playerScore){
-                alert('You lost...');
-            } else {
-                alert("Draw");
-            }
-        } 
-        game();
-  </script>
+    <div id="round-count">Round 1</div>
+    <div id="div-with-buttons">
+        <div id="buttons">
+            <p id="game-result-display"></p>
+            <button id ="rock" class="figures">Rock</button>
+            <button id="paper" class="figures">Paper</button>
+            <button id ="scissors" class="figures">Scissors</button>
+        </div>
+        <div id="round-result">
+        </div>
+    </div>
+    <div id="game-result">
+        <p id="score-text">Score</p>
+        <p id="score-display"></p>
+        <button id="reset-game">Reset</button>
+    </div>
+    <script src="rock-paper-scissors.js"></script>
 </body>
 </html>
